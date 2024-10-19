@@ -64,7 +64,7 @@ const usePromise = (promise) => {
  * @prop {string} lastSoundpackExperimentId
  */
 
-class SoundpackControl {
+module.exports = class SoundpackControl {
 	soundpack = Data.load('SoundpackControl', 'soundpack') ?? 'classic'
 
 	/** @type {?AbortController} */

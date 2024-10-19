@@ -113,7 +113,7 @@ module.exports = class SoundpackControl {
 	}
 
 	getSettingsPanel() {
-		const { FocusRingScope, FormSection, FormTitle, RadioGroup, FormDivider, Button, ButtonSizes } = Webpack.getModule(Filters.byKeys('FocusRingScope', 'FormTitle', 'RadioGroup', 'FormDivider', 'FormSection', 'Button', 'ButtonSizes'))
+		const { FocusRingScope, FormSection, FormTitle, RadioGroup, Button, ButtonSizes } = Webpack.getModule(Filters.byKeys('FocusRingScope', 'FormTitle', 'RadioGroup', 'FormSection', 'Button', 'ButtonSizes'))
 		const SoundUtils = Webpack.getModule((m) => Object.values(m).some((v) => typeof v === 'function' && String(v).includes('sound for pack name')))
 		const playSound = Object.values(SoundUtils).find((v) => typeof v === 'function' && String(v).includes('sound for pack name'))
 

@@ -118,10 +118,14 @@ module.exports = class SoundpackControl {
 		return () => {
 			const SoundpackStore = usePromise(this.storePromise) || this.store
 			const soundpacks = usePromise(this.packsPromise) || this.packs
-			const options = React.useMemo(() => [
-				...soundpacks.map((option) => ({ value: option.value, name: option.label, desc: option.description })),
-				{ value: 'halloween', name: 'Halloween', desc: 'Seasonal event' }
-			], [soundpacks])
+
+			const options = React.useMemo(() => {
+				const map = new Map(soundpacks.map((option) => [option.value, { value: option.value, name: option.label, desc: option.description }]))
+				map.set('discodo', { value: 'discodo', name: 'DISCODO', desc: '๑(◕‿◕)๑' })
+				map.set('asmr', { value: 'asmr', name: 'ASMR', desc: '*hey there*' })
+				map.set('halloween', { value: 'halloween', name: 'Halloween', desc: 'Seasonal event' })
+				return [...map.values()]
+			}, [soundpacks])
 
 			const [container, setContainer] = React.useState(null)
 			const [soundpack, setSoundpack] = React.useState(this.soundpack)

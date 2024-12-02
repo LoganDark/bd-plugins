@@ -97,17 +97,6 @@ module.exports = class SoundpackControl {
 		})
 
 		this.packsPromise = Webpack.waitForModule(packsFilter, { signal: this.abort.signal }).then((packs) => {
-			try {
-				window.webpackChunkdiscord_app.push([[Symbol()], {}, (__internal_require__) => {
-					const localStorageModifier = Object.entries(__internal_require__.m).find(([,f]) => typeof f === 'function' && String(f).includes('delete window.localStorage'))
-					const localStorageStore = Object.values(__internal_require__.c[localStorageModifier[0]].exports).find((v) => typeof v !== 'function')
-					localStorageStore.setRaw('custom_notification_sounds_discodo', 'true')
-					localStorageStore.setRaw('custom_notification_sounds_asmr', 'true')
-				}])
-			} catch (e) {
-				console.error(e)
-			}
-
 			this.packs = Object.values(packs).find((v) => typeof v === 'function')()
 		})
 	}
